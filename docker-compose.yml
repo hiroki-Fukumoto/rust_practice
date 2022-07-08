@@ -1,0 +1,17 @@
+version: '3.8'
+
+services:
+  rust:
+    build:
+      context: .
+      dockerfile: docker/rust/Dockerfile
+    tty: true
+    ports:
+      - 8080:8080
+    working_dir: /workspace
+    volumes:
+      - .:/workspace
+      - rust-target:/workspace/target
+
+volumes:
+  rust-target:
