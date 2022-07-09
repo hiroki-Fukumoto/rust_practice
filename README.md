@@ -20,5 +20,13 @@ run [Reopen in Container]
 ```
 make watch
 ```
+go to <http://localhost:8080/helth-check>
 
-go to <http://localhost:8080/hello>
+### migrate
+```
+make migrate-generate M={file_name} // ex) make migrate-generate M={create_users}
+make migrate-run
+```
+
+### phpMyAdmin
+go to <http://localhost:3002/helth-check>
