@@ -1,14 +1,24 @@
 # Rust Practice
 
+## Setup
+### Create Network
+
+```
+docker network create rust-practice-network
+```
+
 ## Usage
+
 It is assumed that VS Code is used as the editor
 
 ### Reopen in Container
+
 run [Reopen in Container]
 
 ### run
+
 ```
-/workspace# cargo watch -x run
+make watch
 ```
 
-go to <http://0.0.0.0:8088/>
+go to <http://localhost:8080/hello>

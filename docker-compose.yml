@@ -9,9 +9,45 @@ services:
     ports:
       - 8080:8080
     working_dir: /workspace
+    depends_on:
+      - db
     volumes:
       - .:/workspace
       - rust-target:/workspace/target
+    networks:
+      - rust-practice-network
+  db:
+    image: mysql:8.0
+    platform: linux/amd64
+    restart: always
+    environment:
+      MYSQL_DATABASE: example_db
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_USER: user1
+      MYSQL_PASSWORD: user123
+    ports:
+      - 3306:3306
+    volumes:
+      - ./docker/db/data:/var/lib/mysql
+      - ./docker/db/my.cnf:/etc/mysql/conf.d/my.cnf
+    networks:
+      - rust-practice-network
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    environment:
+      - PMA_ARBITRARY=1
+      - PMA_HOST=db
+      - PMA_USER=user1
+      - PMA_PASSWORD=user123
+    ports:
+      - 3002:80
+    volumes:
+      - /sessions
+    networks:
+      - rust-practice-network
 
 volumes:
   rust-target:
+
+networks:
+  rust-practice-network:
