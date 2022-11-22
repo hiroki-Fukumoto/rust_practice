@@ -29,4 +29,4 @@ make migrate-run
 ```
 
 ### phpMyAdmin
-go to <http://localhost:3002/helth-check>
+go to <http://localhost:3002>
